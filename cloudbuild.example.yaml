@@ -1,0 +1,22 @@
+steps:
+- name: node
+  entrypoint: npm
+  args: ['install']
+# Run node tests
+- name: node
+  entrypoint: npm
+  args: ['test']
+# upload test results and post to slack
+- name: 'gcr.io/cloudkite-public/test-notifier:v0.1.0'
+  args: ['test-notifier']
+  env:
+    - 'GCS_BUCKET=$_GCS_BUCKET'
+    - 'HTML_PATH=$_HTML_PATH'
+    - 'BLOB_NAME=$BUILD_ID'
+    - 'SLACK_CHANNEL=$_SLACK_CHANNEL'
+    - 'WEBHOOK_URL=$_WEBHOOK_URL'
+    - 'PROJECT_ID=$_PROJECT_ID'
+    - 'BUILD_ID=$BUILD_ID'
+    - 'REPO_NAME=$REPO_NAME'
+    - 'BRANCH_NAME=$BRANCH_NAME'
+    - 'COMMIT_SHA=$COMMIT_SHA'

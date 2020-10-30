@@ -134,8 +134,8 @@ def main():
     # upload test file/folders to GCS
     test_url = upload_html(html_path, gcs_bucket, destination_blob_name, project_id)
 
-    # # post notification to slack
-    # post_to_slack(slack_channel, test_url, build_id, project_id, webhook_url, repo_name, branch_name, commit)
+    # post notification to slack
+    post_to_slack(slack_channel, test_url, build_id, project_id, webhook_url, repo_name, branch_name, commit)
 
 if __name__ == '__main__':
     main()
