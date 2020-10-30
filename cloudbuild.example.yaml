@@ -8,7 +8,6 @@ steps:
   args: ['test']
 # upload test results and post to slack
 - name: 'gcr.io/cloudkite-public/test-notifier:v0.1.0'
-  args: ['test-notifier']
   env:
     - 'GCS_BUCKET=$_GCS_BUCKET'
     - 'HTML_PATH=$_HTML_PATH'
