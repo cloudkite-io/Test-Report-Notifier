@@ -48,7 +48,7 @@ def upload_html(html_path, gcs_bucket, destination_blob_name, project_id):
 
 
 def post_to_slack(slack_channel, slack_text, build_id, project_id, webhook_url, repo_name, branch_name, commit):
-    slack_user_name = 'E2E Test Report'
+    slack_user_name = 'ReportBot'
     cloudbuild_url = 'https://console.cloud.google.com/cloud-build/builds/%s?project=%s' %(build_id, project_id)
     slack_data = {
         'channel': slack_channel,
